@@ -1,1 +1,2 @@
-Model{state=[0, 1], end=[2], symbols=[a, b], start=0, transition={0={a=[1], b=[1]}, 1={a=[1], b=[1]}}, DFA=true}
+[0, 1];[a, b];0;[1];0S,aP,1aT,bP,1bT,1S,aP,0aT,bP,1bT,;true
+[0, 1];[a, b];0;[1];0S,aP,505aT,bP,0bT,1S,aP,1aT,bP,0bT,;false

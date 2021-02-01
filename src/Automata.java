@@ -1,9 +1,6 @@
 import callback.AutomataCallback;
 import model.Model;
-import task.Accepted;
-import task.ConvertNFA;
-import task.CreateFA;
-import task.FileIO;
+import task.*;
 
 import java.util.*;
 
@@ -11,8 +8,11 @@ public class Automata {
     private static Model model;
     private static boolean stop=true;
     static Scanner input = new Scanner(System.in);
+    static List<Model> models = new ArrayList<>();
     public static void main(String[] args) {
         boolean b = true;
+        List<Model> lModel1 = FileIO.read();
+        models.addAll(lModel1);
         while (b){
             switch (choosingMenu()){
                 case 1:
@@ -47,6 +47,14 @@ public class Automata {
                     }
                     break;
                 case 6:
+                    List<Model> lModel = FileIO.read();
+
+                    int ti =1;
+                    for (Model model1:lModel){
+                        print("\n=======\n"+"***"+ti);
+                        ti++;
+                        PrintFA.printState(model1);
+                    }
                     break;
 
                 default:
@@ -105,7 +113,9 @@ public class Automata {
         @Override
         public void createFAListener(Model model) {
             Automata.model = model;
-            FileIO.write(model);
+
+            models.add(model);
+            FileIO.write(models);
         }
 
         @Override

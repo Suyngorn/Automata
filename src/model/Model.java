@@ -1,5 +1,7 @@
 package model;
 
+import task.PrintFA;
+
 import javax.swing.*;
 import java.io.Serializable;
 import java.util.List;
@@ -62,15 +64,33 @@ public class Model implements Serializable {
         this.DFA = DFA;
     }
 
+    private String train() {
+        String t = "";
+        for (Map.Entry<Integer, Map<Character, List<Integer>>> key : getTransition().entrySet()) {
+            int sta = key.getKey();
+            t = t + sta + "S,";
+            Map<Character, List<Integer>> mapSys = key.getValue();
+            for (Map.Entry<Character, List<Integer>> key1 : mapSys.entrySet()) {
+                char sy = key1.getKey();
+                t = t + sy + "P,";
+                List<Integer> tr = key1.getValue();
+                for (int i : tr) {
+                    t = t + i + sy + "T" + ",";
+                }
+            }
+        }
+
+        return t;
+    }
+
     @Override
     public String toString() {
-        return "Model{" +
-                "state=" + state +
-                ", end=" + end +
-                ", symbols=" + symbols +
-                ", start=" + start +
-                ", transition=" + transition +
-                ", DFA=" + DFA +
-                '}';
+        return state +
+                ";" + symbols +
+                ";" + start +
+                ";" + end +
+                ";" + train() +
+                ";" + DFA +
+                "\n";
     }
 }
