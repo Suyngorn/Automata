@@ -47,7 +47,6 @@ public class Automata {
                     }
                     break;
                 case 6:
-                    FileIO.displayObjects();
                     break;
 
                 default:
