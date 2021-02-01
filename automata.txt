@@ -1,0 +1,1 @@
+Model{state=[0, 1], end=[2], symbols=[a, b], start=0, transition={0={a=[1], b=[1]}, 1={a=[1], b=[1]}}, DFA=true}
